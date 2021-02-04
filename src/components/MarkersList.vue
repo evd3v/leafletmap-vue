@@ -5,7 +5,7 @@
             <v-list-item v-for="(item, i) in marks" :key="i" :to="`/map/${i}`">
                 <v-list-item-content>
                     <v-list-item-title
-                        v-text="`Метка № ${i + 1}`"
+                        v-text="`Метка № ${i}`"
                     ></v-list-item-title>
                     <v-list-item-subtitle
                         v-text="

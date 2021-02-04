@@ -15,7 +15,7 @@
                     :lat-lng="latLng(mark.lat, mark.lon)"
                 >
                     <l-popup>
-                        <div>ID: {{ index + 1 }}</div>
+                        <div>ID: {{ index }}</div>
                         <div>Lat: {{ mark.lat.toFixed(6) }}</div>
                         <div>Lon: {{ mark.lon.toFixed(6) }}</div>
                     </l-popup>

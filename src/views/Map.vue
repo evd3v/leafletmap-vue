@@ -14,8 +14,33 @@
 <script>
 import Map from '@/components/Map'
 import MarkersList from '@/components/MarkersList'
+
+import { mapState, mapMutations } from 'vuex'
+
 export default {
     name: 'MapPage',
-    components: { MarkersList, Map }
+    components: { MarkersList, Map },
+    watch: {
+        '$route.params.id': {
+            handler(value) {
+                if (typeof value === 'undefined') return
+
+                const id = Number(value)
+
+                if (id <= this.marks.length) {
+                    this.SET_MAP_CENTER(this.marks[id])
+                } else {
+                    this.$router.replace('/map')
+                }
+            },
+            immediate: true
+        }
+    },
+    computed: {
+        ...mapState(['marks'])
+    },
+    methods: {
+        ...mapMutations(['SET_MAP_CENTER'])
+    }
 }
 </script>
