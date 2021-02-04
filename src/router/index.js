@@ -8,6 +8,15 @@ const routes = [
         path: '/',
         name: 'Main',
         component: () => import('@/views/Main')
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: () => import('@/views/About')
+    },
+    {
+        path: '*',
+        redirect: '/'
     }
 ]
 

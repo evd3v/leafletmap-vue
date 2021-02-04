@@ -1,5 +1,7 @@
 <template>
-    <div class="main-page"></div>
+    <div class="main-page">
+        123
+    </div>
 </template>
 
 <script>
