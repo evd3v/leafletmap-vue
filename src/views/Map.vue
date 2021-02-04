@@ -29,7 +29,8 @@ export default {
                     const id = Number(value)
 
                     if (id <= this.marks.length && this.marks.length > 0) {
-                        this.SET_SELECTED_MARK_ID(value)
+                        this.SET_SELECTED_MARK_ID(id)
+                        this.SET_MAP_CENTER(this.marks[id])
                     } else {
                         await this.$router.replace('/map')
                     }
@@ -39,7 +40,6 @@ export default {
         },
         selectedMarkId: {
             async handler(value) {
-                console.log('hello', value)
                 if (Number(this.$route.params.id) !== value) {
                     this.SET_MAP_CENTER(this.marks[value])
                     await this.$router.replace(`/map/${value}`)

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
@@ -29,5 +30,14 @@ export default new Vuex.Store({
             commit('ADD_MARK', mark)
         }
     },
-    modules: {}
+    modules: {},
+    plugins: [
+        /** vuex plugin for save state in localStorage */
+        new VuexPersistence({
+            reducer: (state) => ({
+                /** save marks to localStorage before page closed/reloaded */
+                marks: state.marks
+            })
+        }).plugin
+    ]
 })
