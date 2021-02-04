@@ -41,7 +41,7 @@ export default {
             activeTab: `/`,
             tabs: [
                 { id: 1, name: 'О задании', route: `/about` },
-                { id: 2, name: 'Карта', route: `/` }
+                { id: 2, name: 'Карта', route: `/map` }
             ]
         }
     }

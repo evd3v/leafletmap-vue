@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Map from '@/components/Map'
-import MarkersList from '@/components/MarkersList'
+import Map from '@/components/Map/Map'
+import MarkersList from '@/components/Markers/MarkersList'
 
 import { mapState, mapMutations } from 'vuex'
 

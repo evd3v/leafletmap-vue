@@ -3,18 +3,12 @@
         <l-map :zoom="zoom" :center="center" @click="setPoint">
             <l-tile-layer :url="tileUrl" />
             <template v-if="marks.length">
-                <l-marker
-                    @click="() => SET_SELECTED_MARK_ID(index)"
+                <map-marker
                     v-for="(mark, index) in marks"
                     :key="index"
-                    :lat-lng="latLng(mark.lat, mark.lon)"
-                >
-                    <l-popup>
-                        <div>ID: {{ index }}</div>
-                        <div>Lat: {{ mark.lat.toFixed(6) }}</div>
-                        <div>Lon: {{ mark.lon.toFixed(6) }}</div>
-                    </l-popup>
-                </l-marker>
+                    :mark="mark"
+                    :index="index"
+                />
             </template>
         </l-map>
         <v-btn
@@ -31,10 +25,11 @@
 
 <script>
 import { latLng } from 'leaflet'
-import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet'
+import { LMap, LTileLayer } from 'vue2-leaflet'
 import 'leaflet/dist/leaflet.css'
 
 import { mapState, mapActions, mapMutations } from 'vuex'
+import MapMarker from '@/components/Map/MapMarker'
 
 /**
  * Issue with leaflet markers images
@@ -53,15 +48,13 @@ L.Icon.Default.mergeOptions({
 export default {
     name: 'Map',
     components: {
+        MapMarker,
         LMap,
-        LTileLayer,
-        LMarker,
-        LPopup
+        LTileLayer
     },
     data() {
         return {
             zoom: 13,
-            latLng,
             tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             addingMarkMode: false
         }
