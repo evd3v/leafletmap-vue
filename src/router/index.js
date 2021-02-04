@@ -5,9 +5,15 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
-        name: 'Main',
-        component: () => import('@/views/Main')
+        path: '/map',
+        name: 'Map',
+        component: () => import('@/views/Map'),
+        children: [
+            {
+                path: ':id',
+                name: 'Mark'
+            }
+        ]
     },
     {
         path: '/about',
@@ -16,7 +22,7 @@ const routes = [
     },
     {
         path: '*',
-        redirect: '/'
+        redirect: '/map'
     }
 ]
 

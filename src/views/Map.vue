@@ -15,7 +15,7 @@
 import Map from '@/components/Map'
 import MarkersList from '@/components/MarkersList'
 export default {
-    name: 'MainPage',
+    name: 'MapPage',
     components: { MarkersList, Map }
 }
 </script>
