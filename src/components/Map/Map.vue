@@ -87,8 +87,14 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-    height: 100%;
     width: 100%;
+    height: calc((100vh - var(--navbar-height)) / 2);
+
+    @media (min-width: 992px) {
+        max-height: initial;
+        height: 100%;
+    }
+
     &-toggle-mode {
         z-index: 1040;
         position: fixed;

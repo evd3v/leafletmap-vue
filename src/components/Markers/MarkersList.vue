@@ -1,7 +1,11 @@
 <template>
-    <v-list>
+    <v-list class="marked-list">
         <v-subheader class="text-h5 black--text mb-4 mt-4">Маркеры</v-subheader>
-        <v-list-item-group v-model="selectedItem" color="grey-darken-1">
+        <v-list-item-group
+            v-model="selectedItem"
+            color="grey-darken-1"
+            class="overflow-y-auto custom-scrollbar marked-list-items"
+        >
             <marker-list-item
                 v-for="(mark, index) in marks"
                 :key="index"
@@ -36,4 +40,19 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.marked-list {
+    height: calc((100vh - var(--navbar-height)) / 2);
+    @media (min-width: 992px) {
+        height: calc(100vh - var(--navbar-height));
+    }
+
+    &-items {
+        height: 75%;
+        overflow: auto;
+        @media (min-width: 992px) {
+            height: 85%;
+        }
+    }
+}
+</style>

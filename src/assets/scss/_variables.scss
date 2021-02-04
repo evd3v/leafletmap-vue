@@ -1,0 +1,8 @@
+:root {
+  --dark-grayish-blue: #88a3b2;
+  --light-gray: #f5f5f5;
+  --navbar-height: 104px;
+  @media (min-width: 992px) {
+    --navbar-height: 112px;
+  }
+}

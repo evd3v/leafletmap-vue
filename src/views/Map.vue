@@ -1,10 +1,10 @@
 <template>
     <v-container fluid fill-height style="padding: 0;">
         <v-row no-gutters style="height: 100%;">
-            <v-col cols="4">
+            <v-col cols="12" md="4">
                 <MarkersList />
             </v-col>
-            <v-col cols="8">
+            <v-col cols="12" md="8">
                 <Map />
             </v-col>
         </v-row>
