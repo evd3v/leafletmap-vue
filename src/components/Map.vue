@@ -63,7 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
 }
 </style>
