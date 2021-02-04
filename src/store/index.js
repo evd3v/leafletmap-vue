@@ -4,6 +4,8 @@ import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
+import language from './modules/language'
+
 export default new Vuex.Store({
     state: {
         marks: [],
@@ -39,7 +41,7 @@ export default new Vuex.Store({
             })
         }
     },
-    modules: {},
+    modules: { language },
     plugins: [
         /** vuex plugin for save state in localStorage */
         new VuexPersistence({
