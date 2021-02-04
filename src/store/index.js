@@ -28,6 +28,15 @@ export default new Vuex.Store({
         createMark({ commit }, { lat, lon }) {
             const mark = { lat, lon }
             commit('ADD_MARK', mark)
+        },
+        setCenterToGeolocation({ state, commit }) {
+            navigator.geolocation.getCurrentPosition(async (result) => {
+                if (!state.selectedMarkId) {
+                    const { latitude, longitude } = result.coords
+                    const center = { lat: latitude, lon: longitude }
+                    commit('SET_MAP_CENTER', center)
+                }
+            })
         }
     },
     modules: {},
