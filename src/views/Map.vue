@@ -22,25 +22,36 @@ export default {
     components: { MarkersList, Map },
     watch: {
         '$route.params.id': {
-            handler(value) {
+            async handler(value) {
                 if (typeof value === 'undefined') return
 
-                const id = Number(value)
+                if (this.selectedMarkId === null) {
+                    const id = Number(value)
 
-                if (id <= this.marks.length) {
-                    this.SET_MAP_CENTER(this.marks[id])
-                } else {
-                    this.$router.replace('/map')
+                    if (id <= this.marks.length && this.marks.length > 0) {
+                        this.SET_SELECTED_MARK_ID(value)
+                    } else {
+                        await this.$router.replace('/map')
+                    }
                 }
             },
             immediate: true
+        },
+        selectedMarkId: {
+            async handler(value) {
+                console.log('hello', value)
+                if (Number(this.$route.params.id) !== value) {
+                    this.SET_MAP_CENTER(this.marks[value])
+                    await this.$router.replace(`/map/${value}`)
+                }
+            }
         }
     },
     computed: {
-        ...mapState(['marks'])
+        ...mapState(['marks', 'selectedMarkId'])
     },
     methods: {
-        ...mapMutations(['SET_MAP_CENTER'])
+        ...mapMutations(['SET_MAP_CENTER', 'SET_SELECTED_MARK_ID'])
     }
 }
 </script>

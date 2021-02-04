@@ -9,7 +9,8 @@ export default new Vuex.Store({
         mapCenter: {
             lat: '47.41322',
             lon: '-1.219482'
-        }
+        },
+        selectedMarkId: null
     },
     mutations: {
         ADD_MARK(state, mark) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         },
         SET_MAP_CENTER(state, center) {
             state.mapCenter = { ...center }
+        },
+        SET_SELECTED_MARK_ID(state, id) {
+            state.selectedMarkId = id
         }
     },
     actions: {

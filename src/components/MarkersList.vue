@@ -2,7 +2,7 @@
     <v-list>
         <v-subheader class="text-h5 black--text mb-4 mt-4">Маркеры</v-subheader>
         <v-list-item-group v-model="selectedItem" color="grey-darken-1">
-            <v-list-item v-for="(item, i) in marks" :key="i" :to="`/map/${i}`">
+            <v-list-item v-for="(item, i) in marks" :key="i">
                 <v-list-item-content>
                     <v-list-item-title
                         v-text="`Метка № ${i}`"
@@ -19,17 +19,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'MarkersList',
-    data() {
-        return {
-            selectedItem: 1
+    computed: {
+        ...mapState(['marks', 'selectedMarkId']),
+        selectedItem: {
+            get() {
+                return this.selectedMarkId
+            },
+            set(value) {
+                this.SET_SELECTED_MARK_ID(value)
+            }
         }
     },
-    computed: {
-        ...mapState(['marks'])
+    methods: {
+        ...mapMutations(['SET_SELECTED_MARK_ID'])
     }
 }
 </script>

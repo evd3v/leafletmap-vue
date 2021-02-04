@@ -1,15 +1,10 @@
 <template>
     <div class="map">
-        <l-map
-            :zoom="zoom"
-            :center="center"
-            @update:center="centerUpdate"
-            @click="setPoint"
-        >
+        <l-map :zoom="zoom" :center="center" @click="setPoint">
             <l-tile-layer :url="tileUrl" />
             <template v-if="marks.length">
                 <l-marker
-                    @click="() => scrollToMark(mark)"
+                    @click="() => SET_SELECTED_MARK_ID(index)"
                     v-for="(mark, index) in marks"
                     :key="index"
                     :lat-lng="latLng(mark.lat, mark.lon)"
@@ -73,24 +68,13 @@ export default {
     },
     computed: {
         ...mapState(['marks', 'mapCenter']),
-        center: {
-            get() {
-                return latLng(this.mapCenter)
-            },
-            set(value) {
-                this.SET_MAP_CENTER(value)
-            }
+        center() {
+            return latLng(this.mapCenter)
         }
     },
     methods: {
         ...mapActions(['createMark']),
-        ...mapMutations(['SET_MAP_CENTER']),
-        scrollToMark(mark) {
-            this.center = latLng(mark.lat, mark.lon)
-        },
-        centerUpdate(center) {
-            this.center = center
-        },
+        ...mapMutations(['SET_SELECTED_MARK_ID']),
         setPoint(e) {
             const { latlng } = e
             const lat = latlng.lat
