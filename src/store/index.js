@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
+import { fakeRequest } from '@/api'
 
 Vue.use(Vuex)
 
@@ -25,9 +26,10 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        createMark({ commit }, { lat, lon }) {
+        async createMark({ commit }, { lat, lon }) {
             const mark = { lat, lon }
             commit('ADD_MARK', mark)
+            await fakeRequest.makeRequest()
         },
         setCenterToGeolocation({ state, commit }) {
             navigator.geolocation.getCurrentPosition(async (result) => {
