@@ -39,7 +39,7 @@
             <v-tabs v-model="activeTab" align-with-title>
                 <v-tabs-slider color="white"></v-tabs-slider>
 
-                <v-tab v-for="tab in tabs" :key="tab.id" :to="tab.route" exact>
+                <v-tab v-for="tab in tabs" :key="tab.id" :to="tab.route">
                     {{ tab.name }}
                 </v-tab>
             </v-tabs>
