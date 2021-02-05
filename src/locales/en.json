@@ -1,3 +1,7 @@
 {
-  "hello": "Hello!"
+  "marker": "Marker | Markers",
+  "about_task": "About task",
+  "map": "Map",
+  "task_title": "Test task for SquareGPS",
+  "label": "Label"
 }

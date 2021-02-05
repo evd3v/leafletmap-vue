@@ -1,6 +1,8 @@
 <template>
     <v-list class="marked-list">
-        <v-subheader class="text-h5 black--text mb-4 mt-4">Маркеры</v-subheader>
+        <v-subheader class="text-h5 black--text mb-4 mt-4">{{
+            $tc('marker', 2)
+        }}</v-subheader>
         <v-list-item-group
             v-model="selectedItem"
             color="grey-darken-1"

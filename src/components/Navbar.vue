@@ -14,7 +14,7 @@
             ></v-img>
         </template>
 
-        <v-app-bar-title>Тестовое задание для SquareGPS</v-app-bar-title>
+        <v-app-bar-title>{{ $t('task_title') }}</v-app-bar-title>
 
         <v-spacer></v-spacer>
 
@@ -26,11 +26,11 @@
             </template>
             <v-list>
                 <v-list-item
-                    v-for="(item, index) in internationalItems"
-                    @click="() => selectLanguage(item)"
+                    v-for="(language, index) in languages"
+                    @click="() => selectLanguage(language)"
                     :key="index"
                 >
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-title>{{ language.long }}</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
@@ -53,19 +53,23 @@ export default {
     data() {
         return {
             activeTab: `/`,
-            tabs: [
-                { id: 1, name: 'О задании', route: `/about` },
-                { id: 2, name: 'Карта', route: `/map` }
-            ],
-            internationalItems: [
-                { title: 'Русский', code: 'ru' },
-                { title: 'Английский', code: 'en' }
+            languages: [
+                { long: 'Русский', short: 'ru' },
+                { long: 'English', short: 'en' }
+            ]
+        }
+    },
+    computed: {
+        tabs() {
+            return [
+                { id: 1, name: this.$t('about_task'), route: `/about` },
+                { id: 2, name: this.$t('map'), route: `/map` }
             ]
         }
     },
     methods: {
         selectLanguage(item) {
-            console.log(item)
+            this.$i18n.locale = item.short
         }
     }
 }

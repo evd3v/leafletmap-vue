@@ -1,5 +1,8 @@
 <template>
     <v-container>
+        <template v-if="$i18n.locale === 'en'">
+            /** this page is not translated yet */
+        </template>
         <div class="block">
             <div class="header">Тестовое задание SquareGPS</div>
             <div class="text">

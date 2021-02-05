@@ -22,7 +22,7 @@ export default {
     },
     computed: {
         title() {
-            return `Метка № ${this.index}`
+            return `${this.$t('label')} № ${this.index}`
         },
         subtitle() {
             return `${this.mark.lon.toFixed(6)}, ${this.mark.lat.toFixed(6)}`
